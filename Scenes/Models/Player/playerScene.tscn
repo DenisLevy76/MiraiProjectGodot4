@@ -1,0 +1,125 @@
+[gd_scene load_steps=19 format=3 uid="uid://bdvxc6ax7h44e"]
+
+[ext_resource type="PackedScene" uid="uid://bxb1f1ojc1igh" path="res://Scenes/Models/Player/Assets/characterAnimation2.fbx" id="1_a5tmq"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8aa78"]
+animation = &"FallingIdle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oeycu"]
+animation = &"Armature|T-Pose"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2eare"]
+animation = &"JumpingUp"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vqy1v"]
+animation = &"Running"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h0oko"]
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hhvy7"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7h8ct"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xwcrg"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tqqqy"]
+xfade_time = 0.3
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rtnbi"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_81tiy"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0ng2q"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ek0ni"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_el5ss"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ov3dg"]
+states/falling/node = SubResource("AnimationNodeAnimation_8aa78")
+states/falling/position = Vector2(696, 194)
+states/idle/node = SubResource("AnimationNodeAnimation_oeycu")
+states/idle/position = Vector2(383, 100)
+states/jumping/node = SubResource("AnimationNodeAnimation_2eare")
+states/jumping/position = Vector2(696, 100)
+states/running/node = SubResource("AnimationNodeAnimation_vqy1v")
+states/running/position = Vector2(383, 194)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_h0oko"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_hhvy7"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_7h8ct"), "idle", "jumping", SubResource("AnimationNodeStateMachineTransition_xwcrg"), "jumping", "falling", SubResource("AnimationNodeStateMachineTransition_tqqqy"), "falling", "idle", SubResource("AnimationNodeStateMachineTransition_rtnbi"), "idle", "falling", SubResource("AnimationNodeStateMachineTransition_81tiy"), "falling", "running", SubResource("AnimationNodeStateMachineTransition_0ng2q"), "running", "falling", SubResource("AnimationNodeStateMachineTransition_ek0ni"), "running", "jumping", SubResource("AnimationNodeStateMachineTransition_el5ss")]
+graph_offset = Vector2(-40, 5)
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_adjee"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_obm1l"]
+height = 3.63076
+
+[node name="Player" instance=ExtResource("1_a5tmq")]
+
+[node name="Skeleton3D" parent="RootNode/Armature" index="0"]
+bones/1/position = Vector3(-5.58415e-07, 0.0100006, -3.24369e-06)
+bones/1/rotation = Quaternion(0.000630185, 0.0302948, 0.00308145, 0.999536)
+bones/2/rotation = Quaternion(0.0049401, -0.0132844, 0.000251256, 0.9999)
+bones/3/rotation = Quaternion(-0.0334754, -0.00257994, 0.0055398, 0.999421)
+bones/4/rotation = Quaternion(-0.0326407, -0.00261318, 0.00579877, 0.999447)
+bones/5/rotation = Quaternion(-0.0296467, -0.00252038, 0.00126962, 0.999556)
+bones/6/rotation = Quaternion(-0.0838029, -0.0635987, 0.0308396, 0.993972)
+bones/8/rotation = Quaternion(-0.621777, -0.366951, 0.614769, -0.31749)
+bones/9/rotation = Quaternion(0.312541, 0.178417, 0.0830599, 0.929294)
+bones/10/rotation = Quaternion(-0.00153421, -0.012657, 0.0831007, 0.99646)
+bones/11/rotation = Quaternion(0.00413966, -0.00338093, 0.0253964, 0.999663)
+bones/12/rotation = Quaternion(0.183678, -0.0351691, 0.0193618, 0.982166)
+bones/13/rotation = Quaternion(0.313332, 0.0124491, -0.0767197, 0.946458)
+bones/14/rotation = Quaternion(0.117523, 0.029182, -0.149737, 0.981283)
+bones/16/rotation = Quaternion(0.609297, -0.338597, 0.663947, 0.270709)
+bones/17/rotation = Quaternion(0.268174, 0.00516404, 0.045027, 0.962304)
+bones/18/rotation = Quaternion(-0.00336549, 0.0192627, -0.127811, 0.991606)
+bones/19/rotation = Quaternion(0.000787766, -0.0701308, -0.137645, 0.987995)
+bones/20/rotation = Quaternion(0.12603, 0.0240331, -0.0475267, 0.990596)
+bones/21/rotation = Quaternion(0.34014, -0.0136552, 0.0573453, 0.938525)
+bones/22/rotation = Quaternion(0.297817, -0.0361108, 0.0618469, 0.951933)
+bones/24/rotation = Quaternion(0.070269, 0.00509984, 0.99677, -0.0385416)
+bones/25/rotation = Quaternion(0.0805041, 0.0324379, -1.60767e-05, -0.996226)
+bones/26/rotation = Quaternion(0.562939, -0.0193777, -0.057641, 0.824258)
+bones/27/rotation = Quaternion(0.264173, 0.233145, -0.0654207, 0.933582)
+bones/29/rotation = Quaternion(-0.0929316, -0.020437, 0.994197, 0.0501942)
+bones/29/scale = Vector3(1, 1, 1.00002)
+bones/30/rotation = Quaternion(0.0692776, -0.0559934, 0.00469797, -0.996014)
+bones/31/rotation = Quaternion(0.559058, 0.0233787, 0.0642659, 0.826304)
+bones/32/rotation = Quaternion(0.268939, -0.235523, 0.0633719, 0.931764)
+
+[node name="BoneAttachment3D" parent="RootNode/Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.988374, -0.0885404, -0.123605, 0.125153, 0.935396, 0.330711, 0.0863386, -0.342335, 0.935602, -0.119375, 3.78045, -0.149982)
+bone_idx = 7
+
+[node name="BoneAttachment3D2" parent="RootNode/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.594037, -0.568009, -0.569636, 0.11074, -0.643634, 0.757279, -0.796778, -0.512933, -0.319442, 0.574138, 1.46827, 0.129877)
+bone_idx = 15
+
+[node name="BoneAttachment3D3" parent="RootNode/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.292474, 0.894025, 0.33938, 0.409921, -0.43785, 0.800157, 0.863958, -0.0949066, -0.494539, -0.583103, 1.45349, 0.181517)
+bone_idx = 23
+
+[node name="BoneAttachment3D4" parent="RootNode/Armature/Skeleton3D" index="3"]
+transform = Transform3D(-0.925155, 0.00238513, -0.379579, -0.379584, -0.0067062, 0.925123, -0.000338679, 0.999974, 0.00710945, 0.310429, 0.00998391, 0.185977)
+bone_idx = 28
+
+[node name="BoneAttachment3D5" parent="RootNode/Armature/Skeleton3D" index="4"]
+transform = Transform3D(-0.918734, 0.0244066, 0.394123, 0.39342, -0.0291125, 0.918898, 0.0339058, 0.999297, 0.0171418, -0.323833, 0.00195566, 0.175481)
+bone_idx = 33
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="1"]
+tree_root = SubResource("AnimationNodeStateMachine_ov3dg")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+root_motion_track = NodePath("RootNode/Armature/Skeleton3D:RootMotion")
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_adjee")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83007, 0.191437)
+shape = SubResource("CapsuleShape3D_obm1l")

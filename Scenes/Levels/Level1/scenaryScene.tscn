@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7g1y6uu31uqn"]
+
+[ext_resource type="PackedScene" uid="uid://3jpm4y0gyq8u" path="res://Scenes/Levels/Scenary/Scenary.blend" id="1_5oa7s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pikmc"]
+size = Vector3(1, 113.63, 46.0398)
+
+[node name="Scenary" instance=ExtResource("1_5oa7s")]
+
+[node name="StaticBody3d" type="StaticBody3D" parent="." index="857"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.7169, 14.555, 9.90653)
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="StaticBody3d" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44414, 34.6783, 0)
+shape = SubResource("BoxShape3D_pikmc")

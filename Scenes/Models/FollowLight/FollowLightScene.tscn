@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://4urj4dqs0dxa"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerLightScript.gd" id="1_pkkei"]
+
+[node name="SpotLight3d" type="SpotLight3D"]
+transform = Transform3D(0.925996, 0.363113, -0.103346, 0, 0.273741, 0.961803, 0.377534, -0.890626, 0.253483, -2.34231, 15, 4.44021)
+visible = false
+light_energy = 5.0
+shadow_enabled = true
+spot_range = 27.0818
+spot_angle = 28.8824
+script = ExtResource("1_pkkei")
+target_path = NodePath("../Player")
+z_distance = 5.0

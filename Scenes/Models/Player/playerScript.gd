@@ -1,31 +1,36 @@
 extends CharacterBody3D
 
 
-@export var SPEED: float = 5.0
-@export var JUMP_VELOCITY: float = 4.5
+@export var SPEED: float = 650
+@export var JUMP_MAX_HEIGHT: float = 25
+@export var JUMP_MIN_HEIGHT: float = 10
+
+@export var target_path: NodePath
+@onready var camera: Camera3D = get_node(target_path)
+
+@export var camera_x_distance: float = 10
+@export var camera_y_distance: float = 5
+@export var camera_z_distance: float = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var is_flipped = false
-var is_jumping = false
 
 @onready var _animation_tree = $AnimationTree
 
-
 func _physics_process(delta):
-	if not is_on_floor():
-		velocity.y -= gravity * delta
-
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		is_jumping = true
-		
-	if is_jumping and velocity.y > 0:
-		_animation_tree["parameters/playback"].travel("falling")
-	if velocity.y < 0 and not is_on_floor():
-		_animation_tree["parameters/playback"].travel("falling")
-		is_jumping = false
+	if camera: camera.position = Vector3(position.x - camera_x_distance, position.y + camera_y_distance, position.z + camera_z_distance)
 	
+	if is_on_floor():
+		if Input.is_action_just_pressed("jump"): 
+			velocity.y = JUMP_MAX_HEIGHT
+	else:
+		velocity.y -= gravity * delta
+		_animation_tree["parameters/playback"].travel("falling")
+		
+		if Input.is_action_just_released("jump") and velocity.y > JUMP_MIN_HEIGHT:
+			velocity.y = JUMP_MIN_HEIGHT
+		
 	move(delta)
 	move_and_slide()
 
@@ -40,7 +45,6 @@ func move(delta: float):
 func move_to_idle():
 	if is_on_floor(): _animation_tree["parameters/playback"].travel("idle")
 	velocity.z = 0
-	
 
 func move_left(delta):
 	if is_on_floor(): _animation_tree["parameters/playback"].travel("running")

@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-const SPEED = 5
+const SPEED = 600
 const JUMP_VELOCITY = 4.5
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -9,6 +9,9 @@ var direction = 1
 
 @onready var leftRayCast := $LeftRayCast
 @onready var rightRayCast := $RightRayCast
+
+func _ready():
+	$AnimationPlayer.play("walking")
 
 func _physics_process(delta):
 	var found_wall = is_on_wall()
@@ -22,6 +25,6 @@ func _physics_process(delta):
 		direction *= -1
 		
 	if direction:
-		velocity.z = direction * SPEED
+		velocity.z = direction * SPEED * delta
 
 	move_and_slide()

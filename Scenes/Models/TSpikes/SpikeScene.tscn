@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://chxpuh0wxhbr4"]
+
+[ext_resource type="PackedScene" uid="uid://d31ksqxfkjny7" path="res://Scenes/Models/hitbox/hitboxScene.tscn" id="2_bfbp8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yhpwy"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_61t05"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="Spike" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.951585, 0)
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.868978, 0, 0, 0, 0.94764, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_yhpwy")
+
+[node name="RayCast3d" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.512388)
+
+[node name="Hitbox" parent="." instance=ExtResource("2_bfbp8")]
+
+[node name="CollisionShape3d2" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(0.868978, 0, 0, 0, 0.94764, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_61t05")
+
+[node name="Label3d" type="Label3D" parent="."]
+transform = Transform3D(1.31134e-07, 1, -4.37114e-08, 3.82137e-15, 4.37114e-08, 1, 1, -1.31134e-07, 1.91069e-15, 0, 0.733135, 0)
+text = "Spike"

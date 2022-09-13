@@ -11,3 +11,5 @@ extends SpotLight3D
 
 func _process(delta):
 	if target: position = Vector3(target.position.x - x_distance, target.position.y + y_distance, target.position.z + z_distance)
+	else:
+		queue_free()

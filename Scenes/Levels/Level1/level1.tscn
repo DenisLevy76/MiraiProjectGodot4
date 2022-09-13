@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://8cc8vnnxk1pm"]
+[gd_scene load_steps=23 format=3 uid="uid://8cc8vnnxk1pm"]
 
 [ext_resource type="PackedScene" uid="uid://bbjhcvjmmqskr" path="res://Scenes/PlayerCamera/PlayerCameraScene.tscn" id="1_krmnu"]
 [ext_resource type="PackedScene" uid="uid://bdvxc6ax7h44e" path="res://Scenes/Models/Player/playerScene.tscn" id="1_mtjva"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://4urj4dqs0dxa" path="res://Scenes/Models/FollowLight/FollowLightScene.tscn" id="9_tcdbt"]
 [ext_resource type="MeshLibrary" uid="uid://yhr1t20wv31w" path="res://tiles/BlockTile.tres" id="10_62xkj"]
 [ext_resource type="PackedScene" uid="uid://b7g1y6uu31uqn" path="res://Scenes/Levels/Level1/scenaryScene.tscn" id="10_l5al2"]
+[ext_resource type="PackedScene" uid="uid://chxpuh0wxhbr4" path="res://Scenes/Models/TSpikes/SpikeScene.tscn" id="11_3oti1"]
+[ext_resource type="PackedScene" uid="uid://c3s801xxiodq6" path="res://Scenes/Models/coin/coinScene.tscn" id="12_kknno"]
+[ext_resource type="PackedScene" uid="uid://bssbey47rbwm3" path="res://Scenes/Models/Enemy/enemyScene.tscn" id="13_o3ef5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lwj1c"]
 shader = ExtResource("4_tv1wp")
@@ -38,8 +41,8 @@ background_mode = 2
 background_color = Color(0.227451, 0.364706, 0.427451, 1)
 sky = SubResource("Sky_en3cq")
 ambient_light_sky_contribution = 0.8
-tonemap_mode = 2
-tonemap_white = 10.0
+tonemap_mode = 3
+tonemap_white = 5.0
 ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
@@ -77,54 +80,11 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 transform = Transform3D(0.915978, -0.311292, 0.253143, 0, 0.63092, 0.775848, -0.401228, -0.71066, 0.577909, 7.65854, 38.2022, 109.51)
 light_energy = 0.15
 shadow_enabled = true
-shadow_opacity = 0.1
+shadow_opacity = 0.07
 shadow_blur = 10.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6m0ng")
-
-[node name="Node3d" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 141.119)
-
-[node name="MeshInstance3d" type="MeshInstance3D" parent="Node3d"]
-transform = Transform3D(44.7102, 0, 0, 0, 1.00508, 0, 0, 0, 475.002, 11.7171, -0.502433, 9.14815)
-mesh = SubResource("BoxMesh_vilxf")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3d" type="StaticBody3D" parent="Node3d/MeshInstance3d"]
-
-[node name="CollisionShape3d" type="CollisionShape3D" parent="Node3d/MeshInstance3d/StaticBody3d"]
-shape = SubResource("ConcavePolygonShape3D_3gmgj")
-
-[node name="MeshInstance3d2" type="MeshInstance3D" parent="Node3d"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 16.7, 0.00135803, 1.44096, -128.037)
-mesh = SubResource("BoxMesh_oxptv")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3d" type="StaticBody3D" parent="Node3d/MeshInstance3d2"]
-
-[node name="CollisionShape3d" type="CollisionShape3D" parent="Node3d/MeshInstance3d2/StaticBody3d"]
-shape = SubResource("ConcavePolygonShape3D_uqhda")
-
-[node name="MeshInstance3d3" type="MeshInstance3D" parent="Node3d"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 16.7, 0.0813913, 6.36897, -108.648)
-mesh = SubResource("BoxMesh_oxptv")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3d" type="StaticBody3D" parent="Node3d/MeshInstance3d3"]
-
-[node name="CollisionShape3d" type="CollisionShape3D" parent="Node3d/MeshInstance3d3/StaticBody3d"]
-shape = SubResource("ConcavePolygonShape3D_uqhda")
-
-[node name="MeshInstance3d4" type="MeshInstance3D" parent="Node3d"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 5.19578, 0.0813913, 6.36897, -90.4524)
-mesh = SubResource("BoxMesh_oxptv")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3d" type="StaticBody3D" parent="Node3d/MeshInstance3d4"]
-
-[node name="CollisionShape3d" type="CollisionShape3D" parent="Node3d/MeshInstance3d4/StaticBody3d"]
-shape = SubResource("ConcavePolygonShape3D_uqhda")
 
 [node name="SpotLight3d" parent="." instance=ExtResource("9_tcdbt")]
 target_path = NodePath("../PlayerNode/Player")
@@ -137,23 +97,109 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.64574, 0, 0)
 
 [node name="PlayerNode" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -41.1632)
 
 [node name="Camera3d" parent="PlayerNode" instance=ExtResource("1_krmnu")]
 transform = Transform3D(-4.2801e-08, 0.203026, -0.979173, 8.87457e-09, 0.979173, 0.203026, 1, -2.4869e-14, -4.37114e-08, -9.18509, 5.96797, 3.55966)
 script = null
 
-[node name="Player" parent="PlayerNode" instance=ExtResource("1_mtjva")]
+[node name="Player" parent="PlayerNode" node_paths=PackedStringArray("camera") instance=ExtResource("1_mtjva")]
+collision_mask = 5
 script = ExtResource("2_7e70r")
 SPEED = 650.0
 JUMP_MAX_HEIGHT = 25.0
 JUMP_MIN_HEIGHT = 10.0
-target_path = NodePath("../Camera3d")
+camera = NodePath("../Camera3d")
 
 [node name="SpotLight3d2" parent="PlayerNode" instance=ExtResource("9_tcdbt")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0250549, 12.1516, -0.101356)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0239415, 12.1516, -0.118349)
 visible = true
-light_energy = 8.382
+light_energy = 3.796
 shadow_opacity = 0.68
 shadow_blur = 3.0
 spot_angle = 28.5475
+y_distance = 10.0
 z_distance = 0.0
+
+[node name="Spike" parent="." instance=ExtResource("11_3oti1")]
+transform = Transform3D(2.86601, 0, 0, 0, 1, 0, 0, 0, 3.39689, 0, 0.360066, 23.0478)
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(44.7102, 0, 0, 0, 1.00508, 0, 0, 0, 475.002, 11.7171, -0.502433, 150.267)
+mesh = SubResource("BoxMesh_vilxf")
+
+[node name="StaticBody3d" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Ground/StaticBody3d"]
+shape = SubResource("ConcavePolygonShape3D_3gmgj")
+
+[node name="Platforms" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 104.714)
+
+[node name="MeshInstance3d2" type="MeshInstance3D" parent="Platforms"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 16.7, 0.00135803, 1.44096, -128.037)
+mesh = SubResource("BoxMesh_oxptv")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3d" type="StaticBody3D" parent="Platforms/MeshInstance3d2"]
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Platforms/MeshInstance3d2/StaticBody3d"]
+shape = SubResource("ConcavePolygonShape3D_uqhda")
+
+[node name="MeshInstance3d5" type="MeshInstance3D" parent="Platforms"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 16.7, 0.00135803, 1.44096, -44.5925)
+mesh = SubResource("BoxMesh_oxptv")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3d" type="StaticBody3D" parent="Platforms/MeshInstance3d5"]
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Platforms/MeshInstance3d5/StaticBody3d"]
+shape = SubResource("ConcavePolygonShape3D_uqhda")
+
+[node name="MeshInstance3d6" type="MeshInstance3D" parent="Platforms"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 16.7, 0.00135803, 1.44096, -78.5082)
+mesh = SubResource("BoxMesh_oxptv")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3d" type="StaticBody3D" parent="Platforms/MeshInstance3d6"]
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Platforms/MeshInstance3d6/StaticBody3d"]
+shape = SubResource("ConcavePolygonShape3D_uqhda")
+
+[node name="MeshInstance3d3" type="MeshInstance3D" parent="Platforms"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 16.7, 0.0813913, 6.36897, -108.648)
+mesh = SubResource("BoxMesh_oxptv")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3d" type="StaticBody3D" parent="Platforms/MeshInstance3d3"]
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Platforms/MeshInstance3d3/StaticBody3d"]
+shape = SubResource("ConcavePolygonShape3D_uqhda")
+
+[node name="MeshInstance3d4" type="MeshInstance3D" parent="Platforms"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 5.19578, 0.0813913, 6.36897, -92.821)
+mesh = SubResource("BoxMesh_oxptv")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3d" type="StaticBody3D" parent="Platforms/MeshInstance3d4"]
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Platforms/MeshInstance3d4/StaticBody3d"]
+shape = SubResource("ConcavePolygonShape3D_uqhda")
+
+[node name="Enemies" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -36.4053)
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("13_o3ef5")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 7.85643, 32.9663)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("13_o3ef5")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.216745, 32.9663)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("13_o3ef5")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 7.65256, 79.1731)
+
+[node name="Coins" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -36.4053)
+
+[node name="Coin" parent="Coins" instance=ExtResource("12_kknno")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.55001, 9.53099)

@@ -10,9 +10,6 @@ var direction = 1
 @onready var leftRayCast := $LeftRayCast
 @onready var rightRayCast := $RightRayCast
 
-func _ready():
-	$AnimationPlayer.play("walking")
-
 func _physics_process(delta):
 	var found_wall = is_on_wall()
 	var found_edge = not leftRayCast.is_colliding() or not rightRayCast.is_colliding()

@@ -9,6 +9,7 @@
 size = Vector3(1, 2.09082, 1)
 
 [node name="Enemy" type="CharacterBody3D"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0.0195918, 0)
 collision_layer = 4
 script = ExtResource("1_mll0i")
 

@@ -13,6 +13,7 @@ class_name Player
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var is_flipped = false
+var is_rotated = false
 
 @onready var _animation_tree = $AnimationTree
 
@@ -48,9 +49,11 @@ func move_to_idle():
 	if is_on_floor(): _animation_tree["parameters/playback"].travel("idle")
 	velocity.z = 0
 
+
 func move_left(delta):
 	if is_on_floor(): _animation_tree["parameters/playback"].travel("running")
 	_flip_left()
+
 	velocity.z = -SPEED * delta
 
 func mode_right(delta):

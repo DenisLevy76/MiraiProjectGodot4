@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dge6duf0ccdl4"
+path="res://.godot/imported/Better to brun out than to fade away.wav-c63f59185da85ff83906d4cfc4f64158.sample"
+
+[deps]
+
+source_file="res://audios/Better to brun out than to fade away.wav"
+dest_files=["res://.godot/imported/Better to brun out than to fade away.wav-c63f59185da85ff83906d4cfc4f64158.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://byq5gysealjl5"]
+
+[ext_resource type="Script" path="res://Scenes/Models/Key/key_script.gd" id="1_god0n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kanmt"]
+albedo_color = Color(0.678431, 0.494118, 0.384314, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_ligy2"]
+material = SubResource("StandardMaterial3D_kanmt")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n12fa"]
+size = Vector3(1, 1, 0.223738)
+
+[node name="Key" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25125, 0)
+collision_mask = 2
+script = ExtResource("1_god0n")
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.152445, 0, 0, 0)
+mesh = SubResource("PrismMesh_ligy2")
+skeleton = NodePath("")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_n12fa")
+
+[connection signal="body_entered" from="." to="." method="_on_area_3d_body_entered"]

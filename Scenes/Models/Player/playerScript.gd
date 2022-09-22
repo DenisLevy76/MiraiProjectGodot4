@@ -5,6 +5,7 @@ class_name Player
 @export var SPEED: float = 650
 @export var JUMP_MAX_HEIGHT: float = 25
 @export var JUMP_MIN_HEIGHT: float = 10
+@export var lock_x_axis: bool = true
 
 @export var camera: Camera3D
 @export var camera_x_distance: float = 10
@@ -14,6 +15,8 @@ class_name Player
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var is_flipped = false
 var is_rotated = false
+var coins = 0
+var key = false
 
 @onready var _animation_tree = $AnimationTree
 
@@ -25,6 +28,7 @@ func _physics_process(delta):
 
 func move(delta: float):
 	if camera: camera.position = Vector3(position.x - camera_x_distance, position.y + camera_y_distance, position.z + camera_z_distance)
+	if velocity.x != 0 and lock_x_axis: velocity.x = 0
 	if Input.is_action_pressed("left"):
 		move_left(delta)
 	elif Input.is_action_pressed("right"):
@@ -71,3 +75,7 @@ func _flip_right():
 	if is_flipped: 
 		scale.z = 1
 		is_flipped = false		
+
+func increase_coins(value):
+	print(value)
+	coins += value

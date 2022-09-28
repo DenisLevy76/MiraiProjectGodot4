@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scenes/Models/Player/playerScript.gd" id="2_7e70r"]
 [ext_resource type="CompressedTexture3D" uid="uid://dbfbysid168mx" path="res://perlworlnoise.tga" id="4_orcwl"]
 [ext_resource type="Shader" path="res://shaders/clouds.gdshader" id="4_tv1wp"]
-[ext_resource type="Texture2D" uid="uid://dyw1rjxt7xswd" path="res://weather.bmp" id="5_nbhii"]
+[ext_resource type="Texture2D" uid="uid://dfkye0uf4i6w1" path="res://weather.bmp" id="5_nbhii"]
 [ext_resource type="MeshLibrary" uid="uid://tybawso2uh37" path="res://Scenes/Models/Meshes/ground.tres" id="5_p7uvs"]
 [ext_resource type="CompressedTexture3D" uid="uid://c4dp6g6gouj2b" path="res://worlnoise.bmp" id="6_vods0"]
 [ext_resource type="PackedScene" uid="uid://c3s801xxiodq6" path="res://Scenes/Models/coin/coinScene.tscn" id="7_wnof6"]
@@ -338,10 +338,10 @@ transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 3.06173, 316.405)
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 6.11069, 329.224)
 
 [node name="Coins" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -36.4053)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00331879, 1.77109, -35.9244)
 
 [node name="Coin" parent="Coins" instance=ExtResource("7_wnof6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.75901, 27.0272)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000547886, 9.77481, 27.0113)
 
 [node name="Coin2" parent="Coins" instance=ExtResource("7_wnof6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.52849, 49.5014)
@@ -469,13 +469,19 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_3gmgj")
 
 [node name="Scenary" parent="World" instance=ExtResource("10_l5al2")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.64574, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.67647, -0.361435, 0.433243)
 
 [node name="Cube232" parent="World/Scenary" index="225"]
 transform = Transform3D(-17.8194, 0, 2.93172, 0, 9.00689, 0, -6.13421, 0, -8.5164, 79.8008, 14.9421, -21.7303)
 
 [node name="Cube363" parent="World/Scenary" index="367"]
 transform = Transform3D(-0.058174, 0.161265, -0.253698, 0.0011243, 8.66561, 0.0047117, -0.253742, 0.00142382, 0.0581847, 220.212, 14.1683, -20.6839)
+
+[node name="Cube367" parent="World/Scenary" index="371"]
+transform = Transform3D(0.156276, 0, 0.208202, 0, 8.66712, 0, 0.208203, 0, -0.156276, 169.322, 10.6847, -13.7989)
+
+[node name="Cube458" parent="World/Scenary" index="458"]
+transform = Transform3D(-9.28107, 0, 0, 0, 9.2811, 0, 0, 0, 9.2811, 183.909, -4.59545, -12.689)
 
 [node name="Cube631" parent="World/Scenary" index="618"]
 transform = Transform3D(0.215369, 0.260682, 0.019674, -0.00782614, 7.20017, -0.000397913, 0.0196755, 0.0105034, -0.215512, 293.146, 34.9741, -19.3636)
